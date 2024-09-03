@@ -24,7 +24,7 @@ while run:
 
 	if start_button.draw(screen):
 		print('START')
-		import cubeRPG
+		import main
 	if exit_button.draw(screen):
 		print('EXIT')
 
