@@ -1,45 +1,45 @@
 # Example file showing a circle moving on screen
-import pygame
 import os
-
-# pygame setup
+import math
+import random
+import pygame
+from os import listdir
+from os.path import isfile, join
 pygame.init()
-screen = pygame.display.set_mode((1280, 720))
-clock = pygame.time.Clock()
-running = True
+
+pygame.display.set_caption("Cube RPG")
+# pygame setup
+BG_COLOR = (255, 255, 255)
+WIDTH, HEIGHT = 1000, 800
 dt = 0
+FPS = 60
+PLAYER_VEL = 5
 
-player_pos = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
+window = pygame.display.set_mode((WIDTH, HEIGHT))
+
+def get_background(name):
+     image = pygame.image.load(join("assets", "Background", name))
+     _, _, width, height = image.get.rect()
+     tiles = []
+
+     for i in range(WIDTH// width + 1):
+          for j in range (HEIGHT // height + 1):
+               pos = [i * width, j * height]
 
 
-while running:
-    # poll for events
-    # pygame.QUIT event means the user clicked X to close your window
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
+def main(window):
+    clock = pygame.time.Clock()
 
-    # fill the screen with a color to wipe away anything from last frame
-    screen.fill("black")
+    run = True
+    while run:
+        clock.tick(FPS)
 
-    pygame.draw.circle(screen, "red", player_pos, 40)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                    run = False
+                    break
+    pygame.quit()
+    quit()
 
-    keys = pygame.key.get_pressed()
-    if keys[pygame.K_w]:
-        player_pos.y -= 300 * dt
-    if keys[pygame.K_s]:
-        player_pos.y += 300 * dt
-    if keys[pygame.K_a]:
-        player_pos.x -= 300 * dt
-    if keys[pygame.K_d]:
-        player_pos.x += 300 * dt
-
-    # flip() the display to put your work on screen
-    pygame.display.flip()
-
-    # limits FPS to 60
-    # dt is delta time in seconds since last frame, used for framerate-
-    # independent physics.
-    dt = clock.tick(60) / 1000
-
-pygame.quit()
+if __name__ == "__main__":
+    main(window)

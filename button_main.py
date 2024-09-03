@@ -9,8 +9,8 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption('Button Demo')
 
 #load button images
-start_img = pygame.image.load('Media/start_btn.png').convert_alpha()
-exit_img = pygame.image.load('Media/exit_btn.png').convert_alpha()
+start_img = pygame.image.load('assets/start_btn.png').convert_alpha()
+exit_img = pygame.image.load('assets/exit_btn.png').convert_alpha()
 
 #create button instances
 start_button = button.Button(100, 200, start_img, 0.8)
