@@ -22,14 +22,14 @@ pygame.display.set_caption("CubeRPG")
 BLOCK_SIZE = 260
 cube_cord = [[WIDTH//4, HEIGHT//4]]
 WHITE = (255, 255, 255)
-cube = WHITE
+BLUE = (173, 216, 230)
 
 running = True
 
 while running:
 
-    pygame.draw.rect(win, (255, 255, 255), (0, 750, 1550, 100))
-    
+    pygame.draw.rect(win, BLUE, (0, 750, 1550, 100))
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
