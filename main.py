@@ -77,9 +77,29 @@ while running:
     if collide2:
         y_pos = 700
 
+    pygame.draw.rect(win,(WHITE),rect1)
     pygame.display.update()
 
         
 
 
 pygame.quit
+
+# OTHERS
+"""
+class Game:
+    def __init__(self):
+        pygame.init()
+        self.screen = pygame.display.set_mode((640, 480))
+        self.clock = pygame.time.Clock()
+        self.running = True
+
+    def new(self):
+        #starts new game
+        self.playing = True
+
+        self.all_sprites = pygame.sprite.LayeredUpdates()
+        self.blocks = pygame.sprite.LayeredUpdates()
+        self.enemies = pygame.sprite.LayeredUpdates()
+        self.attacks = pygame.sprite.LayeredUpdates()
+"""
