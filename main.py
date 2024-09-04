@@ -48,8 +48,7 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-    pygame.display.flip()
-
+    
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT] and x_pos > vel:
          x_pos -= vel
@@ -74,35 +73,10 @@ while running:
         rect1.bottom = rect3.top
         if rect1.top == rect3.bottom:
             y_pos = 700
+            pygame.display.update()
     if collide2:
         y_pos = 700
-    
-    pygame.draw.rect(win,(GREEN),rect1)
-
-
-    
-    pygame.display.update()
-
-        
-
 
 pygame.quit
 
 # OTHERS
-"""
-class Game:
-    def __init__(self):
-        pygame.init()
-        self.screen = pygame.display.set_mode((640, 480))
-        self.clock = pygame.time.Clock()
-        self.running = True
-
-    def new(self):
-        #starts new game
-        self.playing = True
-
-        self.all_sprites = pygame.sprite.LayeredUpdates()
-        self.blocks = pygame.sprite.LayeredUpdates()
-        self.enemies = pygame.sprite.LayeredUpdates()
-        self.attacks = pygame.sprite.LayeredUpdates()
-"""
