@@ -1,10 +1,23 @@
 import pygame
 import sys
+import os
 
-WIDTH = 640
-HEIGHT = 880
-win = pygame.display.set_mode((800,600))
+WIDTH = 1920
+HEIGHT = 1080
+
+pygame.init()
+
+info = pygame.display.Info() # You have to call this before pygame.display.set_mode()
+screen_width,screen_height = info.current_w,info.current_h
+
+window_width,window_height = WIDTH-10,HEIGHT-500
+win = pygame.display.set_mode((screen_width-10, screen_height-50))
+
+pygame.display.update()
+
 pygame.display.set_caption("CubeRPG")
+
+
 
 BLOCK_SIZE = 260
 cube_cord = [[WIDTH//4, HEIGHT//4]]
