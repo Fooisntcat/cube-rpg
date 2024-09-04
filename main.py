@@ -37,6 +37,7 @@ y_pos = 700
 isJump = False
 
 while running:
+    clock.tick(60)
     win.fill((0, 0, 0),(0 , 0, screen_width, 750))
     rect1 = pygame.draw.rect(win,(180,180,180),(x_pos , y_pos, 50, 50)) 
     rect2 = pygame.draw.rect(win, BLUE, (0, 750, 1550, 100))
@@ -62,11 +63,23 @@ while running:
         if y_vel <- jump_h:
             isJump = False
             y_vel = jump_h
+        if collide:
+            isJump = False
 
-
-    pygame.display.update()
-    clock.tick(60)
+    #collision
+    rect1.bottom += 4
+    collide = rect1.colliderect(rect3)
+    if collide:
+        rect1.bottom = rect3.top
     
+    pygame.draw.rect(win,(0,255,0),rect1)
+
+    
+    pygame.display.update()
+
+        
+
+
 pygame.quit
 
 # OTHERS
