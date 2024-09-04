@@ -28,8 +28,8 @@ running = True
 
 while running:
 
-    pygame.draw.rect(win, (255, 255, 255), (480, 360, BLOCK_SIZE, BLOCK_SIZE))
-
+    pygame.draw.rect(win, (255, 255, 255), (0, 750, 1550, 100))
+    
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
