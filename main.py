@@ -37,7 +37,10 @@ y_pos = 700
 isJump = False
 
 while running:
+    win.fill((0, 0, 0),(0 , 0, screen_width, 750))
+    rect1 = pygame.draw.rect(win,(180,180,180),(x_pos , y_pos, 50, 50)) 
     rect2 = pygame.draw.rect(win, BLUE, (0, 750, 1550, 100))
+    rect3 = pygame.draw.rect(win, BLUE, (800, 600, 200, 60))
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -59,12 +62,8 @@ while running:
         if y_vel <- jump_h:
             isJump = False
             y_vel = jump_h
-                    
-    
 
-    win.fill((0, 0, 0),(0 , 0, screen_width, 750))
 
-    rect1 = pygame.draw.rect(win,(180,180,180),(x_pos , y_pos, 50, 50)) 
     pygame.display.update()
     clock.tick(60)
     
