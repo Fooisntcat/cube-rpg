@@ -30,10 +30,11 @@ class Game:
 
 BLOCK_SIZE = 20
 cube_cord = [[WIDTH//4, HEIGHT//4]]
+WHITE = (255, 255, 255)
 def draw_objects():
     win.fill((0, 0, 0))
     for cord in cube_cord:
-        pygame.draw.rect(win, WHITE, pygame.Rect(pos[0], pos[1], BLOCK_SIZE, BLOCK_SIZE))
+        pygame.draw.rect(win, WHITE, pygame.Rect(cord[0], cord[1], BLOCK_SIZE, BLOCK_SIZE))
 
     #def update(self):
     
