@@ -8,7 +8,14 @@ import time
 WIDTH = 1920
 HEIGHT = 1080
 running = True
-vel = 3
+vel = 5
+jumpvalue = 0
+
+#jumping
+clock = pygame.time.Clock()
+y_gravity = 2
+jump_h = 30
+y_vel = jump_h
 
 # Init
 pygame.init()
@@ -26,12 +33,11 @@ BLUE = (173, 216, 230)
 
 # PLAYER VARIABLES
 x_pos = 300
-y_pos = 300
+y_pos = 700
 isJump = False
-jumpCount = 10
 
 while running:
-    rect1 = pygame.draw.rect(win, BLUE, (0, 750, 1550, 100))
+    rect2 = pygame.draw.rect(win, BLUE, (0, 750, 1550, 100))
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -43,31 +49,24 @@ while running:
          x_pos -= vel
     if keys[pygame.K_RIGHT] and x_pos < screen_width - vel - 60:
         x_pos += vel
-    if keys[pygame.K_UP] and y_pos > vel:
-        y_pos -= vel
     if keys[pygame.K_DOWN] and y_pos < screen_height - vel - 160:
         y_pos += vel
-
-    #jumping
-    if not(isJump):
-        if keys[pygame.K_SPACE]:
-            isJump = True
-        
-        else:
-            if jumpCount >= -10:
-                y_pos -= (jumpCount * abs(jumpCount)) * 0.5
-                jumpCount -= 1
-            else: 
-                rect2.center = pygame.mouse.get_pos()
-                collide = rect1.colliderect(rect2)
-                if collide:
-                    jumpCount = 10
-                    isJump = False
+    if keys[pygame.K_SPACE]:
+        isJump = True     
+    if isJump:
+        y_pos -= y_vel
+        y_vel -= y_gravity
+        if y_vel <- jump_h:
+            isJump = False
+            y_vel = jump_h
+                    
+    
 
     win.fill((0, 0, 0),(0 , 0, screen_width, 750))
 
-    rect2 = pygame.draw.rect(win,(180,180,180),(x_pos , y_pos, 50, 50)) 
+    rect1 = pygame.draw.rect(win,(180,180,180),(x_pos , y_pos, 50, 50)) 
     pygame.display.update()
+    clock.tick(60)
     
 pygame.quit
 
