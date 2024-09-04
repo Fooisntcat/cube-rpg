@@ -3,15 +3,24 @@ import sys
 
 WIDTH = 640
 HEIGHT = 880
-win = pygame.display.set_mode((600, 600))
+win = pygame.display.set_mode((800,600))
 pygame.display.set_caption("CubeRPG")
+
+BLOCK_SIZE = 260
+cube_cord = [[WIDTH//4, HEIGHT//4]]
+WHITE = (255, 255, 255)
+cube = WHITE
 
 running = True
 
 while running:
+
+    pygame.draw.rect(win, (255, 255, 255), (480, 360, BLOCK_SIZE, BLOCK_SIZE))
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+    pygame.display.flip()
 
 class Game:
     def __init__(self):
@@ -31,17 +40,18 @@ class Game:
 
 
 
-BLOCK_SIZE = 260
-cube_cord = [[WIDTH//4, HEIGHT//4]]
-WHITE = (255, 255, 255)
-while running:
-    def draw_objects():
-        win.fill((0, 0, 0))
-        for cord in cube_cord:
-            pygame.draw.rect(win, WHITE, pygame.Rect(cord[0], cord[1], BLOCK_SIZE, BLOCK_SIZE))
 
-draw_objects()
-pygame.display.update()
+
+def draw_objects():
+    win.fill((0, 0, 0))
+    print("win fill")
+    for cord in cube_cord:
+        print("draw rect")
+        #pygame.draw.rect(win, (255, 255, 255), (480, 360, BLOCK_SIZE, BLOCK_SIZE))
+
+#draw_objects()
+
+#pygame.display.update()
 
     #def update(self):
     
