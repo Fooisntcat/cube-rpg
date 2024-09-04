@@ -94,10 +94,12 @@ while running:
         is_colliding = True
 
         print(score)
-        win.blit(sentence, (100, 100))
 
     score_text = font.render(f'Score: {score}', True, (255, 255, 255))
     win.blit(score_text, (10, 10))
+
+    if is_colliding == True:
+                win.blit(sentence, (100, 100))
 
     pygame.draw.rect(win,(WHITE),rect1)
     pygame.display.update()
