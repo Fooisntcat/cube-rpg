@@ -26,7 +26,7 @@ WHITE = (255, 255, 255)
 cube = WHITE
 
 running = True
-vel = 10
+vel = 3
 
 w=40
 h=60
