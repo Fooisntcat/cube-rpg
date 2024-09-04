@@ -77,6 +77,9 @@ while running:
     if collide2:
         y_pos = 700
 
-pygame.quit
+    pygame.display.update()
 
-# OTHERS
+        
+
+
+pygame.quit
