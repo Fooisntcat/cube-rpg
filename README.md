@@ -2,4 +2,4 @@
 Cube RPG is a game made by a team of 3. You will play as a cube and your objective is to kill the boss using as less time as possible. You will encounter different enemies while gradually stronger by getting new weapons. You can also choose between 3 difficulties that makes your gameplay more intriguing.
  
 ## DOCUMENTATION<br/>
-1.    pygame.display.update()](https://www.geeksforgeeks.org/python-moving-an-object-in-pygame/
+1. https://www.geeksforgeeks.org/python-moving-an-object-in-pygame/
