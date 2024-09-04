@@ -36,6 +36,8 @@ def draw_objects():
     for cord in cube_cord:
         pygame.draw.rect(win, WHITE, pygame.Rect(cord[0], cord[1], BLOCK_SIZE, BLOCK_SIZE))
 
+draw_objects()
+
     #def update(self):
     
     #def draw(self):
