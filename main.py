@@ -39,20 +39,6 @@ class Game:
         self.attacks = pygame.sprite.LayeredUpdates()
 
 
-
-
-
-def draw_objects():
-    win.fill((0, 0, 0))
-    print("win fill")
-    for cord in cube_cord:
-        print("draw rect")
-        #pygame.draw.rect(win, (255, 255, 255), (480, 360, BLOCK_SIZE, BLOCK_SIZE))
-
-#draw_objects()
-
-#pygame.display.update()
-
     #def update(self):
     
     #def draw(self):
