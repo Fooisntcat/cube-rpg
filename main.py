@@ -10,12 +10,11 @@ HEIGHT = 1080
 running = True
 vel = 3
 
+# Init
+pygame.init()
 info = pygame.display.Info()
 screen_width,screen_height = info.current_w,info.current_h
 win = pygame.display.set_mode((screen_width-10, screen_height-50))
-
-# Init
-pygame.init()
 
 # Display Setup
 pygame.display.update()
@@ -32,7 +31,7 @@ isJump = False
 jumpCount = 10
 
 while running:
-    pygame.draw.rect(win, BLUE, (0, 750, 1550, 100))
+    rect1 = pygame.draw.rect(win, BLUE, (0, 750, 1550, 100))
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -49,9 +48,25 @@ while running:
     if keys[pygame.K_DOWN] and y_pos < screen_height - vel - 160:
         y_pos += vel
 
+    #jumping
+    if not(isJump):
+        if keys[pygame.K_SPACE]:
+            isJump = True
+        
+        else:
+            if jumpCount >= -10:
+                y_pos -= (jumpCount * abs(jumpCount)) * 0.5
+                jumpCount -= 1
+            else: 
+                rect2.center = pygame.mouse.get_pos()
+                collide = rect1.colliderect(rect2)
+                if collide:
+                    jumpCount = 10
+                    isJump = False
+
     win.fill((0, 0, 0),(0 , 0, screen_width, 750))
 
-    pygame.draw.rect(win,(180,180,180),(x_pos , y_pos, 50, 50)) 
+    rect2 = pygame.draw.rect(win,(180,180,180),(x_pos , y_pos, 50, 50)) 
     pygame.display.update()
     
 pygame.quit
