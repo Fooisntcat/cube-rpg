@@ -1,38 +1,37 @@
+#IMPORTS
 import pygame
 import sys
 import os
 import time
 
+#CONFIG
 WIDTH = 1920
 HEIGHT = 1080
-x = 300
-y = 300
-
-pygame.init()
-
-info = pygame.display.Info() # You have to call this before pygame.display.set_mode()
-screen_width,screen_height = info.current_w,info.current_h
-win = pygame.display.set_mode((screen_width-10, screen_height-50))
-
-pygame.display.update()
-
-pygame.display.set_caption("CubeRPG")
-
-
-
-BLOCK_SIZE = 260
-cube_cord = [[WIDTH//4, HEIGHT//4]]
-WHITE = (255, 255, 255)
-BLUE = (173, 216, 230)
-
 running = True
 vel = 3
 
-w=40
-h=60
+info = pygame.display.Info()
+screen_width,screen_height = info.current_w,info.current_h
+win = pygame.display.set_mode((screen_width-10, screen_height-50))
+
+# Init
+pygame.init()
+
+# Display Setup
+pygame.display.update()
+pygame.display.set_caption("CubeRPG")
+
+# COLOURS
+WHITE = (255, 255, 255)
+BLUE = (173, 216, 230)
+
+# PLAYER VARIABLES
+x_pos = 300
+y_pos = 300
+isJump = False
+jumpCount = 10
 
 while running:
-
     pygame.draw.rect(win, BLUE, (0, 750, 1550, 100))
 
     for event in pygame.event.get():
@@ -40,26 +39,25 @@ while running:
             running = False
     pygame.display.flip()
 
-
     keys = pygame.key.get_pressed()
-    if keys[pygame.K_LEFT] and x > vel:
-         x -= vel
-    if keys[pygame.K_RIGHT] and x < screen_width - vel - 60:
-        x += vel
-    if keys[pygame.K_UP] and y > vel:
-        y -= vel
-    if keys[pygame.K_DOWN] and y < screen_height - vel - 160:
-        y += vel
+    if keys[pygame.K_LEFT] and x_pos > vel:
+         x_pos -= vel
+    if keys[pygame.K_RIGHT] and x_pos < screen_width - vel - 60:
+        x_pos += vel
+    if keys[pygame.K_UP] and y_pos > vel:
+        y_pos -= vel
+    if keys[pygame.K_DOWN] and y_pos < screen_height - vel - 160:
+        y_pos += vel
 
     win.fill((0, 0, 0),(0 , 0, screen_width, 750))
-    pygame.draw.rect(win,(180,180,180),(x , y, 50, 50)) 
+
+    pygame.draw.rect(win,(180,180,180),(x_pos , y_pos, 50, 50)) 
     pygame.display.update()
-    
-
-
     
 pygame.quit
 
+# OTHERS
+"""
 class Game:
     def __init__(self):
         pygame.init()
@@ -75,14 +73,4 @@ class Game:
         self.blocks = pygame.sprite.LayeredUpdates()
         self.enemies = pygame.sprite.LayeredUpdates()
         self.attacks = pygame.sprite.LayeredUpdates()
-
-
-    #def update(self):
-    
-    #def draw(self):
-
-    #def main(self):
-
-    #def game_over(self):
-
-    #def intro_screen(self):
+"""
