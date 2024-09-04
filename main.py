@@ -30,6 +30,8 @@ pygame.display.set_caption("CubeRPG")
 # COLOURS
 WHITE = (255, 255, 255)
 BLUE = (173, 216, 230)
+BLACK = (0,0,0)
+GREEN = (0,255,0)
 
 # PLAYER VARIABLES
 x_pos = 300
@@ -39,7 +41,7 @@ isJump = False
 while running:
     clock.tick(60)
     win.fill((0, 0, 0),(0 , 0, screen_width, 750))
-    rect1 = pygame.draw.rect(win,(180,180,180),(x_pos , y_pos, 50, 50)) 
+    rect1 = pygame.draw.rect(win, BLACK,(x_pos , y_pos, 50, 50)) 
     rect2 = pygame.draw.rect(win, BLUE, (0, 750, 1550, 100))
     rect3 = pygame.draw.rect(win, BLUE, (800, 600, 200, 60))
 
@@ -53,8 +55,6 @@ while running:
          x_pos -= vel
     if keys[pygame.K_RIGHT] and x_pos < screen_width - vel - 60:
         x_pos += vel
-    if keys[pygame.K_DOWN] and y_pos < screen_height - vel - 160:
-        y_pos += vel
     if keys[pygame.K_SPACE]:
         isJump = True     
     if isJump:
@@ -64,15 +64,21 @@ while running:
             isJump = False
             y_vel = jump_h
         if collide:
-            isJump = False
+            y_vel = 0
 
     #collision
-    rect1.bottom += 4
     collide = rect1.colliderect(rect3)
+    collide2 = rect1.colliderect(rect2)
+
     if collide:
         rect1.bottom = rect3.top
+        if rect1.top == rect3.bottom:
+            y_pos = 700
+    if collide2:
+        y_pos = 700
     
-    pygame.draw.rect(win,(0,255,0),rect1)
+    pygame.draw.rect(win,(GREEN),rect1)
+
 
     
     pygame.display.update()
