@@ -29,6 +29,7 @@ class Game:
         self.player = Player()
 
 BLOCK_SIZE = 20
+cube_cord = [[WIDTH//4, HEIGHT//4]]
 def draw_objects():
     win.fill((0, 0, 0))
     for cord in cube_cord:
