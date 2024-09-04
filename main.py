@@ -1,7 +1,10 @@
 import pygame
-from sprites import *
-from config import *
 import sys
+
+WIDTH = 640
+HEIGHT = 880
+win = pygame.display.set_mode((600, 600))
+pygame.display.set_caption("CubeRPG")
 
 running = True
 
@@ -13,7 +16,7 @@ while running:
 class Game:
     def __init__(self):
         pygame.init()
-        self.screen = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
+        self.screen = pygame.display.set_mode((640, 480))
         self.clock = pygame.time.Clock()
         self.running = True
 
@@ -26,16 +29,19 @@ class Game:
         self.enemies = pygame.sprite.LayeredUpdates()
         self.attacks = pygame.sprite.LayeredUpdates()
 
-        self.player = Player()
 
-BLOCK_SIZE = 20
+
+BLOCK_SIZE = 260
 cube_cord = [[WIDTH//4, HEIGHT//4]]
 WHITE = (255, 255, 255)
-def draw_objects():
-    for cord in cube_cord:
-        pygame.draw.rect(win, WHITE, pygame.Rect(cord[0], cord[1], BLOCK_SIZE, BLOCK_SIZE))
+while running:
+    def draw_objects():
+        win.fill((0, 0, 0))
+        for cord in cube_cord:
+            pygame.draw.rect(win, WHITE, pygame.Rect(cord[0], cord[1], BLOCK_SIZE, BLOCK_SIZE))
 
 draw_objects()
+pygame.display.update()
 
     #def update(self):
     
