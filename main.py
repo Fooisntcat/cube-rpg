@@ -13,7 +13,7 @@ vel = 5
 jumpvalue = 0
 
 score = 0
-score_increment = 1
+is_colliding = False
 
 #jumping
 clock = pygame.time.Clock()
@@ -27,6 +27,11 @@ pygame.font.init()
 info = pygame.display.Info()
 screen_width,screen_height = info.current_w,info.current_h
 win = pygame.display.set_mode((screen_width-10, screen_height-50))
+
+# Set up the font object
+font = pygame.font.Font(None, 36)
+
+sentence = font.render(f'"Pocahontas" was a nickname, meaning "the naughty one" or "spoiled child"', True, (255, 255, 255))
 
 # Display Setup
 pygame.display.update()
@@ -83,21 +88,19 @@ while running:
             pygame.display.update()
     if collide2:
         y_pos = 700
-    if collide3:
-        score += score_increment
+        is_colliding = False
+    if collide3 and is_colliding == False:
+        score += 1
+        is_colliding = True
+
         print(score)
-
-    pygame.draw.rect(win,(WHITE),rect1)
-    pygame.display.update()
-
-    # Set up the font object
-    font = pygame.font.Font(None, 36)
+        win.blit(sentence, (100, 100))
 
     score_text = font.render(f'Score: {score}', True, (255, 255, 255))
     win.blit(score_text, (10, 10))
 
-    
-
+    pygame.draw.rect(win,(WHITE),rect1)
+    pygame.display.update()
     pygame.display.flip()
 
     clock.tick(60)
