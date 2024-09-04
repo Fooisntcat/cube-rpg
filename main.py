@@ -11,7 +11,11 @@ HEIGHT = 1080
 running = True
 vel = 5
 jumpvalue = 0
-point = 0
+pygame.init()
+pygame.font.init()
+
+score = 0
+score_increment = 10
 
 #jumping
 clock = pygame.time.Clock()
@@ -52,7 +56,6 @@ while running:
         if event.type == pygame.QUIT:
             running = False
     
-
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT] and x_pos > vel:
          x_pos -= vel
@@ -83,11 +86,19 @@ while running:
     if collide2:
         y_pos = 700
     if collide3:
-        point += 1
-        print(point)
+        score += 1
+        print(score)
 
     pygame.draw.rect(win,(WHITE),rect1)
     pygame.display.update()
+
+    # Draw the score to the screen
+
+    # Set up the font object
+    font = pygame.font.Font(None, 36)
+
+    score_text = font.render(f'Score: {score}', True, (255, 255, 255))
+    win.blit(score_text, (10, 10))
 
         
 
